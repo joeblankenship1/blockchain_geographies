@@ -6,6 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+numpy = "*"
+pandas = "*"
+matplotlib = "*"
+networkx = "*"
 
 [requires]
 python_version = "3.7"
