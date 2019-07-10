@@ -13,6 +13,7 @@ networkx = "*"
 requests = "*"
 flake8 = "*"
 blockchain = "*"
+jupyter = "*"
 
 [requires]
 python_version = "3.7"

@@ -14,6 +14,7 @@ import networkx as nx
 from blockchain import blockexplorer as bce
 
 
+#%%
 def main():
     pass
 
@@ -23,6 +24,12 @@ def bitcoin_data(address):
     """
     Gather and format the Bitcoin data for a given address
     """
+    # get_address for an input hash
+    # transaction from address object (output is list)
+    # for i in transactions[i]:
+    #     for i in .inputs: print i.address # returns input hashes for transaction
+    #     for i in .outputs: print i.address # returns output hashes for transaction
+    # 
     pass
 
 
