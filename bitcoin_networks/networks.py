@@ -11,6 +11,7 @@ __license__ = ""
 #%%
 import pandas as pd
 import networkx as nx
+from blockchain import blockexplorer as bce
 
 
 def main():
