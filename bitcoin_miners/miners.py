@@ -15,6 +15,14 @@ import pandas as pd
 
 
 #%%
+def main():
+    """
+    This will eventually be the selector function for which/all miners for ETLj
+    """
+    pass
+
+
+#%%
 def bitnodes():
     url = 'https://bitnodes.earn.com/api/v1/snapshots/latest/'
     headers = {'Accept': 'application/json; indent=4', }
