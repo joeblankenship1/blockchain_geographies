@@ -24,14 +24,19 @@ def bitcoin_data(address):
     """
     Gather and format the Bitcoin data for a given address
     """
-    # get_address for an input hash
-    # transaction from address object (output is list)
-    # for i in transactions[i]:
-    #     for i in .inputs: print i.address # returns input hashes for transaction
-    #     for i in .outputs: print i.address # returns output hashes for transaction
+    input_address = bce.get_address(address)
+    transactions = input_address.transactions
+    event_counter = 1
+    for event in transactions:
+        print('Transaction ' + str(event_counter))
+        for i in event.inputs:
+            print('from ' + i.address)
+        for o in event.outputs:
+            print('to ' + o.address)
+        event_counter += 1
+
     # push to dataframe (datetime, from, to, block id, name)
     # dataframe to csv
-    pass
 
 
 #%%
@@ -42,7 +47,7 @@ def bitcoin_network(data):
     # select data object(s) with node/edge information
     # create separate node/edge lists if needed
     # create graph of network
-    # export options
+    # export options (csv, image, edge/node files)
     pass
 
 
