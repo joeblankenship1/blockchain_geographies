@@ -39,6 +39,10 @@ def bitcoin_network(data):
     """
     Generate the graph of bitcoin transactions
     """
+    # select data object(s) with node/edge information
+    # create separate node/edge lists if needed
+    # create graph of network
+    # export options
     pass
 
 
