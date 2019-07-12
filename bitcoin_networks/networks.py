@@ -29,7 +29,8 @@ def bitcoin_data(address):
     # for i in transactions[i]:
     #     for i in .inputs: print i.address # returns input hashes for transaction
     #     for i in .outputs: print i.address # returns output hashes for transaction
-    # 
+    # push to dataframe (datetime, from, to, block id, name)
+    # dataframe to csv
     pass
 
 
