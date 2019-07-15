@@ -15,6 +15,10 @@ from blockchain import blockexplorer as bce
 
 
 #%%
+network_dict = {}
+
+
+#%%
 def main():
     pass
 
