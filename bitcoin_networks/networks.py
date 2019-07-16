@@ -35,12 +35,14 @@ def bitcoin_data(address):
         print('Transaction ' + str(event_counter))
         for i in event.inputs:
             print('from ' + i.address)
+            print('value ' + str(i.value))
         for o in event.outputs:
             print('to ' + o.address)
+            print('value ' + str(o.value))
         event_counter += 1
 
-    # push to dataframe (datetime, from, to, block id, name)
-    # dataframe to csv
+    # push to dictionary of dicts (datetime, from, to, block id, name)
+    # csv output as well
 
 
 #%%
