@@ -9,7 +9,7 @@ __version__ = "19.0.1"
 __license__ = ""
 
 #%%
-import pandas as pd
+from datetime import datetime
 import networkx as nx
 from blockchain import blockexplorer as bce
 
@@ -17,6 +17,12 @@ from blockchain import blockexplorer as bce
 #%%
 # edges as set, list as metadata
 network_dict = {}
+
+
+#%%
+def timestamp_conv(time_stamp):
+    time_formatted = datetime.utcfromtimestamp(time_stamp).strftime('%Y-%m-%d %H:%M:%S')
+    return time_formatted
 
 
 #%%
@@ -29,6 +35,8 @@ def bitcoin_data(address):
     event_counter = 1
     for event in transactions:
         print('Transaction ' + str(event_counter))
+        print('Time ' + str(timestamp_conv(event.time)))
+        print('relayed by ' + str(event.relayed_by))
         for i in event.inputs:
             print('from ' + i.address)
             print('value ' + str(i.value))
