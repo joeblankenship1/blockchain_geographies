@@ -2,6 +2,7 @@
 """
 A library for generating Bitcoin graph data for a given address.
 An API key may be required for access.
+All bitcoin values are in Satoshi (divide by 100000000 = BTC)
 """
 
 __author__ = "Joe Blankenship"
@@ -32,9 +33,8 @@ def bitcoin_data(address):
     """
     input_address = bce.get_address(address)
     transactions = input_address.transactions
-    event_counter = 1
     for event in transactions:
-        print('Transaction ' + str(event_counter))
+        print('Transaction hash ' + str(event.hash))
         print('Time ' + str(timestamp_conv(event.time)))
         print('relayed by ' + str(event.relayed_by))
         for i in event.inputs:
@@ -43,10 +43,10 @@ def bitcoin_data(address):
         for o in event.outputs:
             print('to ' + o.address)
             print('value ' + str(o.value))
-        event_counter += 1
+        print(' ')
 
-    # push to dictionary of dicts (datetime, from, to, block id, name)
-    # csv output as well
+    # metadata in dict > dict to list w/ to from > list to set > set to final edge list
+
 
 
 #%%
