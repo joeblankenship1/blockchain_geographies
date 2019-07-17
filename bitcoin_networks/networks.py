@@ -15,12 +15,8 @@ from blockchain import blockexplorer as bce
 
 
 #%%
+# edges as set, list as metadata
 network_dict = {}
-
-
-#%%
-def main():
-    pass
 
 
 #%%

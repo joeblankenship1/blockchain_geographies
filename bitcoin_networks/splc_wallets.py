@@ -27,6 +27,7 @@ def get_node_data():
     for i in wallet_names:
         name = str(i).strip('p<>/')
         names.append(name)
+    # I would do the same thing for 'a' elements, but the page wouldn't allow it. So...
     # extract page text, run a regex for urls, create a list of urls per entity on page
     wallet_text = wallet_addresses.text
     wallets = wallet_text.split(' 0\n')
