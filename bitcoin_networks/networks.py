@@ -30,23 +30,33 @@ def timestamp_conv(time_stamp):
 def bitcoin_data(address):
     """
     Gather and format the Bitcoin data for a given address
+    Output schema:
+        input address, output address
+        input value
+        output value
+        transaction hash
+        transaction time
+        transaction relay
     """
+    transaction_pairs = []
     input_address = bce.get_address(address)
     transactions = input_address.transactions
     for event in transactions:
-        print('Transaction hash ' + str(event.hash))
-        print('Time ' + str(timestamp_conv(event.time)))
-        print('relayed by ' + str(event.relayed_by))
         for i in event.inputs:
-            print('from ' + i.address)
-            print('value ' + str(i.value))
-        for o in event.outputs:
-            print('to ' + o.address)
-            print('value ' + str(o.value))
-        print(' ')
+            for o in event.outputs:
+                transaction_pairs.append([i.address,
+                                          o.address,
+                                          i.value,
+                                          o.value,
+                                          event.hash,
+                                          timestamp_conv(event.time),
+                                          event.relayed_by])
+    return transaction_pairs
 
-    # metadata in dict > dict to list w/ to from > list to set > set to final edge list
-
+# metadata in dict > dict to list w/ to from > list to set > set to final edge list
+# single function for structuring edges from a single transaction event
+# use this to populate edge list for a given address
+# iterate over collection of addresses via node list
 
 
 #%%
@@ -60,8 +70,8 @@ def bitcoin_network(data):
     # export options (csv, image, edge/node files)
     pass
 
-
-#%%
+'''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     main()
+'''
