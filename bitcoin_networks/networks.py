@@ -30,13 +30,16 @@ def timestamp_conv(time_stamp):
 def bitcoin_data(address):
     """
     Gather and format the Bitcoin data for a given address
-    Output schema:
-        input address, output address
+    Output schema as Tuple:
+        input address,
+        output address,
+        {
         input value
         output value
         transaction hash
         transaction time
         transaction relay
+        }
     """
     transaction_pairs = []
     input_address = bce.get_address(address)
@@ -44,16 +47,18 @@ def bitcoin_data(address):
     for event in transactions:
         for i in event.inputs:
             for o in event.outputs:
-                transaction_pairs.append([i.address,
-                                          o.address,
-                                          i.value,
-                                          o.value,
-                                          event.hash,
-                                          timestamp_conv(event.time),
-                                          event.relayed_by])
+                transaction_pairs.append(tuple([i.address,
+                                                o.address,
+                                                {
+                                                 'input_value': i.value,
+                                                 'output_value': o.value,
+                                                 'hash': event.hash,
+                                                 'time': timestamp_conv(event.time),
+                                                 'relay': event.relayed_by
+                                                 }
+                                                ]))
     return transaction_pairs
 
-# metadata in dict > dict to list w/ to from > list to set > set to final edge list
 # single function for structuring edges from a single transaction event
 # use this to populate edge list for a given address
 # iterate over collection of addresses via node list
@@ -69,6 +74,7 @@ def bitcoin_network(data):
     # create graph of network
     # export options (csv, image, edge/node files)
     pass
+
 
 '''
 if __name__ == "__main__":
