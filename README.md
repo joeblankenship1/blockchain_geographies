@@ -14,6 +14,9 @@ Resources:
 
 * [OpenCage](https://opencagedata.com/)
 * [Southern Poverty Law Center](https://www.splcenter.org/bitcoin-and-alt-right)
+* [Bitnodes](https://bitnodes.earn.com/)
+* [BitcoinWhosWho](https://bitcoinwhoswho.com/)
+* [Blockchain.com](https://www.blockchain.com/)
 
 This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
