@@ -57,3 +57,10 @@ def node_data_to_file():
     """
     with open('data/alt_right_nodes.txt', 'w') as f:
         f.write(str(get_node_data()))
+
+
+'''
+if __name__ == "__main__":
+    """ This is executed when run from the command line """
+    main()
+'''
