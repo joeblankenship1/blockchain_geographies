@@ -13,12 +13,14 @@ from bs4 import BeautifulSoup
 import re
 
 
-def get_node_data():
+def get_node_data(url):
     """
     This goes out to SPLC to grab alt-right Bitcoin addresses
+    original url was:
+    'https://www.splcenter.org/bitcoin-and-alt-right'
     """
     # BeautifulSoup to grab SPLC website data
-    posts_rawlist = requests.get('https://www.splcenter.org/bitcoin-and-alt-right')
+    posts_rawlist = requests.get(url)
     soup = BeautifulSoup((posts_rawlist.text), "html5lib")
     wallet_addresses = soup.find(class_='field field-name-field-content-items field-type-field-collection field-label-hidden')
     # extract all names attached to Bitcoin wallet list
