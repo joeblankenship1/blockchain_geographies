@@ -15,14 +15,6 @@ import pandas as pd
 
 
 #%%
-def main():
-    """
-    This will eventually be the selector function for which/all miners for ETLj
-    """
-    pass
-
-
-#%%
 def bitnodes():
     url = 'https://bitnodes.earn.com/api/v1/snapshots/latest/'
     headers = {'Accept': 'application/json; indent=4', }
@@ -52,6 +44,8 @@ def bitnodes():
     bitnodes_nodes.to_csv('bitnodes.csv', encoding='utf-8')
 
 
+"""
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     main()
+"""
