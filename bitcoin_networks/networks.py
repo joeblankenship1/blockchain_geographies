@@ -13,11 +13,7 @@ __license__ = ""
 from datetime import datetime
 import networkx as nx
 from blockchain import blockexplorer as bce
-
-
-#%%
-# edges as set, list as metadata
-network_dict = {}
+from splc_wallets import get_node_data
 
 
 #%%
@@ -58,6 +54,7 @@ def bitcoin_data(address):
                                                  }
                                                 ]))
     return transaction_pairs
+
 
 # single function for structuring edges from a single transaction event
 # use this to populate edge list for a given address
