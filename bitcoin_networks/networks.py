@@ -56,29 +56,47 @@ def bitcoin_data(address):
     return transaction_pairs
 
 
+#%%
 def bitcoin_nodes_splc(url):
     """
     Gather and structure bitcoin address information
     for SPLC Alt-right wallets
     """
-    get_node_data(url)
-
+    node_data = get_node_data(url)
+    return node_data
 
 #%%
 def bitcoin_network(data):
     """
-    Generate the graph of bitcoin transactions
     Iterate over node addresses
     Download transactions for addresses
     generate edge list for network
     """
-    # select data object(s) with node/edge information
-    # create separate node/edge lists if needed
-    # create graph of network
-    # export options (csv, image, edge/node files)
     pass
 
 
+#%%
+def bitcoin_draw(data):
+    """
+    Generate the graph of bitcoin transactions
+    select data object(s) with node/edge information
+    create graph of network
+    """
+    pass
+
+
+def bitcoin_data_export(data, type):
+    """
+    export data in one of these formats:
+        CSV
+        PNG
+        JSON
+        Edge/Node files
+    """
+    pass
+
+
+#%%
 '''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
