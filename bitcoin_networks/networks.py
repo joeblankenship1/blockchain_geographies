@@ -56,15 +56,21 @@ def bitcoin_data(address):
     return transaction_pairs
 
 
-# single function for structuring edges from a single transaction event
-# use this to populate edge list for a given address
-# iterate over collection of addresses via node list
+def bitcoin_nodes_splc(url):
+    """
+    Gather and structure bitcoin address information
+    for SPLC Alt-right wallets
+    """
+    get_node_data(url)
 
 
 #%%
 def bitcoin_network(data):
     """
     Generate the graph of bitcoin transactions
+    Iterate over node addresses
+    Download transactions for addresses
+    generate edge list for network
     """
     # select data object(s) with node/edge information
     # create separate node/edge lists if needed
