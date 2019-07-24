@@ -53,12 +53,12 @@ def get_node_data(url):
     return alt_right_nodes
 
 
-def node_data_to_file():
+def node_data_to_file(url):
     """
     Creates an external txt file for backup
     """
     with open('data/alt_right_nodes.txt', 'w') as f:
-        f.write(str(get_node_data()))
+        f.write(str(get_node_data(url)))
 
 
 '''
