@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 import re
 
 
-def get_node_data(splc_url):
+def get_node_data(splc_url='https://www.splcenter.org/bitcoin-and-alt-right'):
     """
     This goes out to SPLC to grab alt-right Bitcoin addresses
     original url was:
@@ -48,12 +48,13 @@ def get_node_data(splc_url):
         hashes.append(hash_list)
     # create dictionary with names and hashes
     list_zipped = zip(names, hashes)
-    alt_right_nodes = dict(list_zipped)
+    zipped_to_dict = dict(list_zipped)
+    alt_right_nodes = {value: key for key in zipped_to_dict for value in zipped_to_dict[key]}
     # return dictionary
     return alt_right_nodes
 
 
-def node_data_to_file(url):
+def node_data_to_file(url='https://www.splcenter.org/bitcoin-and-alt-right'):
     """
     Creates an external txt file for backup
     """
