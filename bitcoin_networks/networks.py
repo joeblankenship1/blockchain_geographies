@@ -57,13 +57,13 @@ def bitcoin_data(address):
 
 
 #%%
-def bitcoin_nodes_splc(url):
+def bitcoin_nodes_splc():
     """
     Gather and structure bitcoin address information
     for SPLC Alt-right wallets
     original url = 'https://www.splcenter.org/bitcoin-and-alt-right'
     """
-    node_data = get_node_data(url)
+    node_data = get_node_data()
     return node_data
 
 #%%
@@ -76,7 +76,12 @@ def bitcoin_network(node_data):
     network_data = []
     for i in node_data:
         network_data.append(bitcoin_data(i[0]))
-    return network_data
+    network_data_combine = []
+    for i in network_data:
+        for j in i:
+            network_data_combine.append(j)
+    return network_data_combine
+
 
 #%%
 def bitcoin_draw(data):
