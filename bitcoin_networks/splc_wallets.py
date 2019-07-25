@@ -48,10 +48,16 @@ def get_node_data(splc_url='https://www.splcenter.org/bitcoin-and-alt-right'):
         hashes.append(hash_list)
     # create dictionary with names and hashes
     list_zipped = zip(names, hashes)
+    # combine lists into a dict
     zipped_to_dict = dict(list_zipped)
-    alt_right_nodes = {value: key for key in zipped_to_dict for value in zipped_to_dict[key]}
-    # return dictionary
-    return alt_right_nodes
+    # swap order of values to keys
+    dict_swap = {value: key for key in zipped_to_dict for value in zipped_to_dict[key]}
+    # create a list of nodes
+    final_node_list = []
+    for key, value in dict_swap.items():
+        final_node_list.append(tuple([key, {'name': value}]))
+    # return final node list
+    return final_node_list
 
 
 def node_data_to_file(url='https://www.splcenter.org/bitcoin-and-alt-right'):
@@ -65,5 +71,5 @@ def node_data_to_file(url='https://www.splcenter.org/bitcoin-and-alt-right'):
 '''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
-    main()
+    node_data_to_file()
 '''
