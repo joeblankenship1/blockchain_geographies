@@ -15,8 +15,7 @@ import pandas as pd
 
 
 #%%
-def bitnodes():
-    url = 'https://bitnodes.earn.com/api/v1/snapshots/latest/'
+def bitnodes(url='https://bitnodes.earn.com/api/v1/snapshots/latest/'):
     headers = {'Accept': 'application/json; indent=4', }
     bitnodes_data = requests.get(url,
                                  headers=headers
@@ -41,11 +40,12 @@ def bitnodes():
                                   )
     bitnodes_nodes['Connected_since'] = pd.to_datetime(bitnodes_nodes['Connected_since'],
                                                        unit='s')
-    bitnodes_nodes.to_csv('bitnodes.csv', encoding='utf-8')
+    bitnodes_nodes.to_csv('data/bitnodes.csv', encoding='utf-8')
 
 
-"""
+#%%
+'''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     main()
-"""
+'''
