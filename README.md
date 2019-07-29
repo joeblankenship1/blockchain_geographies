@@ -10,6 +10,8 @@ This set of scripts intends to gather as much geospatial information on the mine
 
 This set of scripts intends to gather and structure bitcoin transactions into graphs of transaction networks. Nodes and edges are initially coded with data available on the blockchain, but may include additional information from specific web crawls per hash.
 
+** This code is really rough and is NOT production ready, so use at your own risk. I'll be cleaning this up as I go along.
+
 Resources:
 
 * [OpenCage](https://opencagedata.com/)
