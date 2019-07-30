@@ -94,15 +94,20 @@ def bitcoin_graph(node_data, edge_data):
     graph_object.add_edges_from(edge_data)
     return graph_object
 
-def bitcoin_data_export(data, type):
+
+#%%
+def bitcoin_data_export(graph_data, type, filename):
     """
     export data in one of these formats:
-        CSV
-        PNG
-        JSON
-        Edge/Node files
+        edgelist
+        graphml
     """
-    pass
+    if type.lower() == 'edgelist':
+        nx.write_edgelist(graph_data, f'data/{filename}.edgelist')
+    elif type.lower() == 'graphml':
+        nx.write_graphml(graph_data, f'data/{filename}.graphml')
+    else:
+        'Please enter one of the following options: edgelist; graphml.'
 
 
 #%%
