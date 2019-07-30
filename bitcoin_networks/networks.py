@@ -66,6 +66,7 @@ def bitcoin_nodes_splc():
     node_data = get_node_data()
     return node_data
 
+
 #%%
 def bitcoin_network(node_data):
     """
@@ -84,14 +85,14 @@ def bitcoin_network(node_data):
 
 
 #%%
-def bitcoin_draw(data):
+def bitcoin_graph(node_data, edge_data):
     """
-    Generate the graph of bitcoin transactions
-    select data object(s) with node/edge information
-    create graph of network
+    Generate graph object of bitcoin transactions
     """
-    pass
-
+    graph_object = nx.DiGraph()
+    graph_object.add_nodes_from(node_data)
+    graph_object.add_edges_from(edge_data)
+    return graph_object
 
 def bitcoin_data_export(data, type):
     """
