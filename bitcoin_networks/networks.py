@@ -101,13 +101,16 @@ def bitcoin_data_export(graph_data, type, filename):
     export data in one of these formats:
         edgelist
         graphml
+        adjacencylist
     """
     if type.lower() == 'edgelist':
         nx.write_edgelist(graph_data, f'data/{filename}.edgelist')
     elif type.lower() == 'graphml':
         nx.write_graphml(graph_data, f'data/{filename}.graphml')
+    elif type.lower() == 'adjacencylist':
+        nx.write_adjlist(graph_data, f'data/{filename}.adjlist')
     else:
-        'Please enter one of the following options: edgelist; graphml.'
+        'Please enter one of the following options: edgelist; graphml; adjacencylist.'
 
 
 #%%
