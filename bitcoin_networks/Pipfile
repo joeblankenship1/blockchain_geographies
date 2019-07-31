@@ -16,6 +16,7 @@ blockchain = "*"
 jupyter = "*"
 bs4 = "*"
 html5lib = "*"
+scipy = "*"
 
 [requires]
 python_version = "3.7"
