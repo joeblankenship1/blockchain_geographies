@@ -2,7 +2,7 @@
 """
 A library for generating Bitcoin graph data for a given address.
 An API key may be required for access.
-All bitcoin values are in Satoshi (divide by 100000000 = BTC)
+All bitcoin values are in Satoshi (divide by 100000000 Satoshi = 1 BTC)
 """
 
 __author__ = "Joe Blankenship"
