@@ -17,6 +17,7 @@ jupyter = "*"
 bs4 = "*"
 html5lib = "*"
 scipy = "*"
+pygithub = "*"
 
 [requires]
 python_version = "3.7"
