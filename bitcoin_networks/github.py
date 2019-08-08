@@ -9,6 +9,11 @@ __version__ = "19.0.1"
 __license__ = ""
 
 
+from github import Github
+
+
+github_acct = Github()
+
 
 '''
 if __name__ == "__main__":
