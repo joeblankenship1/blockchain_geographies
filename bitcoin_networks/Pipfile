@@ -18,6 +18,7 @@ bs4 = "*"
 html5lib = "*"
 scipy = "*"
 pygithub = "*"
+python-linkedin-v2 = "*"
 
 [requires]
 python_version = "3.7"
