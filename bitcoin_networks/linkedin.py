@@ -11,11 +11,20 @@ __license__ = ""
 
 from linkedin_v2 import linkedin
 
-authentication = linkedin.LinkedInDeveloperAuthentication(CONSUMER_KEY, CONSUMER_SECRET, 
-                                                          USER_TOKEN, USER_SECRET, 
-                                                          RETURN_URL, linkedin.PERMISSIONS.enums.values())
+authentication = linkedin.LinkedInDeveloperAuthentication(CONSUMER_KEY,
+                                                          CONSUMER_SECRET, 
+                                                          USER_TOKEN,
+                                                          USER_SECRET, 
+                                                          RETURN_URL,
+                                                          linkedin.PERMISSIONS.enums.values()
+                                                          )
 
 application = linkedin.LinkedInApplication(authentication)
+
+
+# function for user data
+# search function for finding blockchain-based people
+# function for blockchain organizations
 
 
 '''
