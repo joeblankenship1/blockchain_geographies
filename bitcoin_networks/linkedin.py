@@ -22,9 +22,19 @@ authentication = linkedin.LinkedInDeveloperAuthentication(CONSUMER_KEY,
 application = linkedin.LinkedInApplication(authentication)
 
 
-# function for user data
-# search function for finding blockchain-based people
-# function for blockchain organizations
+def user_data():
+    """function for user data"""
+    pass
+
+
+def blockchain_people():
+    """search function for finding blockchain-based people"""
+    pass
+
+
+def blockchain_orgs():
+    """function for blockchain organizations"""
+    pass
 
 
 '''
