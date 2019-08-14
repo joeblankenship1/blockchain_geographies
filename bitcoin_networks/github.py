@@ -15,10 +15,24 @@ from github import Github
 github_acct = Github()
 
 
-# function for user data
-# function for repo info
-# function for finding blockchain projects
-# function for blockchain repo contributors
+def user_data():
+    """function for user data"""
+    pass
+
+
+def repository_info():
+    """function for repo info"""
+    pass
+
+
+def contributors():
+    """function for blockchain repo contributors"""
+    pass
+
+
+def blockchain_projects():
+    """function for finding blockchain projects"""
+    pass
 
 
 '''
