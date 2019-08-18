@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  bitcoin_networks:
+    image: bitcoin_networks
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
