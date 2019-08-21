@@ -112,6 +112,19 @@ class Slushpool:
         return slushpool_data
 
 
+class BitcoinCom:
+
+    bitcoincom_stats_url = ''
+
+    def bitcoin_stats(bitcoincom_stats_url):
+        """
+        This will pull the stats data from bitcoin.com pool
+        """
+        url = bitcoincom_stats_url
+        bitcoincom_data = requests.get(url)
+        return bitcoincom_data
+
+
 #%%
 '''
 if __name__ == "__main__":
