@@ -82,6 +82,20 @@ class F2Pool:
         return f2pool_data
 
 
+class Bitminter:
+
+    bitminter_stats_url = 'https://bitminter.com/api/pool/stats'
+
+    def bitminter_stats(bitminter_stats_url):
+        """
+        This will pull the stats from bitminter
+        pool stats are available through the public api
+        """
+        url = bitminter_stats_url
+        bitminter_data = requests.get(url)
+        return bitminter_data
+
+
 #%%
 '''
 if __name__ == "__main__":
