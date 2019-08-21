@@ -96,6 +96,22 @@ class Bitminter:
         return bitminter_data
 
 
+class Slushpool:
+
+    slushpool_stats_url = 'https://slushpool.com/stats/json/btc/'
+
+    def slushpool_stats(slushpool_stats_url, api_key):
+        """
+        This will pull the stats from slushpool
+        pool stats require an API key in the header
+        header = {'SlushPool-Auth-Token': '<api key>'}
+        """
+        url = slushpool_stats_url
+        headers = {'SlushPool-Auth-Token': str(api_key)}
+        slushpool_data = requests.get(url, headers=headers)
+        return slushpool_data
+
+
 #%%
 '''
 if __name__ == "__main__":
