@@ -125,6 +125,19 @@ class BitcoinCom:
         return bitcoincom_data
 
 
+class GrinMint:
+
+    grinmint_stats_url = 'https://api.grinmint.com/v1/poolStats'
+
+    def grinmint_stats(grinmint_stats_url):
+        """
+        This will pull the stats data from GrinMint pool
+        """
+        url = grinmint_stats_url
+        grinmint_data = requests.get(url)
+        return grinmint_data
+
+
 #%%
 '''
 if __name__ == "__main__":
