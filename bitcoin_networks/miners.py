@@ -138,6 +138,20 @@ class GrinMint:
         return grinmint_data
 
 
+class ViaBtc:
+
+    viaabtc_stats_url = 'https://pool.viabtc.com/'
+
+    def viabtc_stats(viaabtc_stats_url):
+        """
+        This will pull the stats data from ViaBTC pool
+        this is pulled from html on the page - not an API
+        """
+        url = viaabtc_stats_url
+        viabtc_data = requests.get(url)
+        return viabtc_data
+
+
 #%%
 '''
 if __name__ == "__main__":
