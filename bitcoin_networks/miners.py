@@ -152,6 +152,20 @@ class ViaBtc:
         return viabtc_data
 
 
+class AntPool:
+
+    antpool_stats_url = ''
+
+    def antpool_stats(antpool_stats_url):
+        """
+        This will pull the stats data from AntPool
+        Requires an API key to access
+        """
+        url = antpool_stats_url
+        antpool_data = requests.get(url)
+        return antpool_data
+
+
 #%%
 '''
 if __name__ == "__main__":
