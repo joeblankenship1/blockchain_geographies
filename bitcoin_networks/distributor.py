@@ -9,6 +9,16 @@ __version__ = "19.0.1"
 __license__ = ""
 
 
+class LocalBitcoin:
+
+    pass
+
+
+class BitcoinAtm:
+
+    pass
+
+
 '''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
