@@ -8,7 +8,11 @@ __author__ = "Joe Blankenship"
 __version__ = "19.0.1"
 __license__ = ""
 
-
+"""
+search for all #altright tags
+pull users
+pull user message history
+"""
 
 '''
 if __name__ == "__main__":
