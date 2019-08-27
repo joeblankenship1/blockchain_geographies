@@ -19,6 +19,7 @@ html5lib = "*"
 scipy = "*"
 pygithub = "*"
 python-linkedin-v2 = "*"
+gab = "*"
 
 [requires]
 python_version = "3.7"
