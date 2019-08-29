@@ -69,6 +69,12 @@ class BtcCom:
         btc_com_data = requests.get(url)
         return btc_com_data
 
+    def btc_com_blocks(url):
+        """
+        """
+        btc_com_data = requests.get(url)
+        return btc_com_data
+
 
 class F2Pool:
 
@@ -164,6 +170,9 @@ class AntPool:
         url = antpool_stats_url
         antpool_data = requests.get(url)
         return antpool_data
+
+
+#  Bixin, BitFury, Poolin, btc.top
 
 
 #%%
