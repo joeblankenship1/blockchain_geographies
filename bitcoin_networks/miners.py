@@ -51,7 +51,7 @@ class Bitnodes:
 #%%
 class BtcCom:
 
-    def btc_com_nodes(url):
+    def btc_com_nodes(url, access_key, puid):
         """
         This will pull the node list from btc.com pool
         Requires an account with access_key and puid
@@ -60,7 +60,7 @@ class BtcCom:
         btc_com_data = requests.get(url)
         return btc_com_data
 
-    def btc_com_pool_stats(url):
+    def btc_com_pool_stats(url, access_key, puid):
         """
         This will pull the overall mining stats for btc.com pools
         Requires an account with access_key and puid
@@ -71,6 +71,7 @@ class BtcCom:
 
     def btc_com_blocks(url):
         """
+        This will scrape the Bitcoin block publication history from btc.com
         """
         btc_com_data = requests.get(url)
         return btc_com_data
