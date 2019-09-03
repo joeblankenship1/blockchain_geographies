@@ -45,7 +45,7 @@ class Bitnodes:
                                       )
         bitnodes_nodes['Connected_since'] = pd.to_datetime(bitnodes_nodes['Connected_since'],
                                                            unit='s')
-        bitnodes_nodes.to_csv('data/bitnodes.csv', encoding='utf-8')
+        return bitnodes_nodes
 
 
 #%%
