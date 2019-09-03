@@ -2,6 +2,13 @@
 """
 A library for extracting Bitcoin miner information from several APIs.
 In many case, API keys will be required for access.
+
+These are the mining pools that are currently accessible:
+
+Bitnodes
+BTC.com
+F2Pool
+
 """
 
 __author__ = "Joe Blankenship"
