@@ -85,6 +85,7 @@ class BtcCom:
         return btc_com_data
 
 
+#%%
 class F2Pool:
 
     def f2pool_stats(url):
@@ -97,6 +98,7 @@ class F2Pool:
         return f2pool_data
 
 
+#%%
 class Bitminter:
 
     bitminter_stats_url = 'https://bitminter.com/api/pool/stats'
@@ -111,6 +113,7 @@ class Bitminter:
         return bitminter_data
 
 
+#%%
 class Slushpool:
 
     slushpool_stats_url = 'https://slushpool.com/stats/json/btc/'
@@ -127,6 +130,7 @@ class Slushpool:
         return slushpool_data
 
 
+#%%
 class BitcoinCom:
 
     bitcoincom_stats_url = ''
@@ -140,6 +144,7 @@ class BitcoinCom:
         return bitcoincom_data
 
 
+#%%
 class GrinMint:
 
     grinmint_stats_url = 'https://api.grinmint.com/v1/poolStats'
@@ -153,6 +158,7 @@ class GrinMint:
         return grinmint_data
 
 
+#%%
 class ViaBtc:
 
     viaabtc_stats_url = 'https://pool.viabtc.com/'
@@ -167,6 +173,7 @@ class ViaBtc:
         return viabtc_data
 
 
+#%%
 class AntPool:
 
     antpool_stats_url = ''
