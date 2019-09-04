@@ -65,7 +65,8 @@ class BtcCom:
         url example 'https://pool.api.btc.com/v1/pool/node-list?access_key=${access_key}&puid=${puid}'
         """
         btc_com_data = requests.get(url)
-        return btc_com_data
+        btc_com_df = pd.read_json(btc_com_data)
+        return btc_com_df
 
     def btc_com_pool_stats(url, access_key, puid):
         """
