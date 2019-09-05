@@ -19,6 +19,7 @@ __license__ = ""
 #%%
 import requests
 import pandas as pd
+from bs4 import BeautifulSoup
 
 
 #%%
@@ -85,20 +86,41 @@ class BtcCom:
         df_final = df_transpose.set_index('dtg')
         return df_final
 
-    def btc_com_blocks(access_key, puid, pages, page_size='1000', url='https://pool.api.btc.com/v1/'):
+    def btc_com_blocks_api(access_key, puid, page, page_size='1000', url='https://pool.api.btc.com/v1/'):
         """
-        This will scrape the Bitcoin block publication history from btc.com
+        This will pull the Bitcoin block publication history from btc.com api
         Requires an account with access_key and puid
-        url example 'https://pool.api.btc.com/v1/blocks?access_key={access_key}&puid={puid}&page={str(int)}&page_size={str(int)}'
+        url example 'https://pool.api.btc.com/v1/blocks?access_key={access_key}&puid={puid}&page={page_number}&page_size={max_1000}'
         """
-        btc_com_df_all = pd.DataFrame()
-        for page in range(pages):
-            api_url = f'{url}blocks?access_key={access_key}&puid={puid}&page={page}&page_size={page_size}'
-            btc_com_data = requests.get(api_url)
-            btc_com_df = pd.read_json(btc_com_data.text)
-            btc_com_df_data = pd.DataFrame(btc_com_df.data.values.tolist())
-            btc_com_df_all.append(btc_com_df_data)
-        return btc_com_df_all
+        api_url = f'{url}blocks?access_key={access_key}&puid={puid}&page={page}&page_size={page_size}'
+        btc_com_data = requests.get(api_url)
+        btc_com_df = pd.read_json(btc_com_data.text)
+        btc_com_df_final = btc_com_df.drop(columns='err_no')
+        return btc_com_df_final
+
+    def btc_com_blocks_scrape(url='https://pool.btc.com/pool-stats'):
+        """
+        This will scrape the Bitcoin block publication history from btc.com pool stats page
+        """
+        block_data_raw = requests.get(url)
+        block_data_text = BeautifulSoup((block_data_raw.text), "html.parser")
+        block_data_header = block_data_text.find('thead')
+        block_data_heads = block_data_header.find_all('th')
+        header = []
+        for col in block_data_heads:
+            cols = col.find_all('a')
+            cols = [ele.text.strip() for ele in cols]
+            header.append([ele for ele in cols if ele])
+        header = [item for sublist in header for item in sublist]
+        block_data_body = block_data_text.find('tbody')
+        block_data_rows = block_data_body.find_all('tr')
+        data = []
+        for row in block_data_rows:
+            cols = row.find_all('td')
+            cols = [ele.text.strip() for ele in cols]
+            data.append([ele for ele in cols if ele])
+        block_data_final = pd.DataFrame(data, columns=header)
+        return block_data_final
 
 
 #%%
