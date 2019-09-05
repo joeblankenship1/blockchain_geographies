@@ -79,17 +79,26 @@ class BtcCom:
         api_url = f'{url}pool/status?access_key={access_key}&puid={puid}'
         btc_com_data = requests.get(api_url)
         btc_com_df = pd.read_json(btc_com_data.text)
-        btc_com_df_data = pd.DataFrame(btc_com_df.data.values.tolist())
-        return btc_com_df_data
+        df_drop = btc_com_df.drop(columns=['err_no'])
+        df_transpose = df_drop.T
+        df_transpose['dtg'] = pd.datetime.utcnow().isoformat()
+        df_final = df_transpose.set_index('dtg')
+        return df_final
 
-    def btc_com_blocks(url):
+    def btc_com_blocks(access_key, puid, pages, page_size='1000', url='https://pool.api.btc.com/v1/'):
         """
         This will scrape the Bitcoin block publication history from btc.com
         Requires an account with access_key and puid
         url example 'https://pool.api.btc.com/v1/blocks?access_key={access_key}&puid={puid}&page={str(int)}&page_size={str(int)}'
         """
-        btc_com_data = requests.get(url)
-        return btc_com_data
+        btc_com_df_all = pd.DataFrame()
+        for page in range(pages):
+            api_url = f'{url}blocks?access_key={access_key}&puid={puid}&page={page}&page_size={page_size}'
+            btc_com_data = requests.get(api_url)
+            btc_com_df = pd.read_json(btc_com_data.text)
+            btc_com_df_data = pd.DataFrame(btc_com_df.data.values.tolist())
+            btc_com_df_all.append(btc_com_df_data)
+        return btc_com_df_all
 
 
 #%%
