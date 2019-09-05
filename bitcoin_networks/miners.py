@@ -58,28 +58,35 @@ class Bitnodes:
 #%%
 class BtcCom:
 
-    def btc_com_nodes(url, access_key, puid):
+    def btc_com_nodes(access_key, puid, url='https://pool.api.btc.com/v1/'):
         """
         This will pull the node list from btc.com pool
         Requires an account with access_key and puid
-        url example 'https://pool.api.btc.com/v1/pool/node-list?access_key=${access_key}&puid=${puid}'
+        url example 'https://pool.api.btc.com/v1/pool/node-list?access_key={access_key}&puid={puid}'
         """
-        btc_com_data = requests.get(url)
-        btc_com_df = pd.read_json(btc_com_data)
-        return btc_com_df
+        api_url = f'{url}pool/node-list?access_key={access_key}&puid={puid}'
+        btc_com_data = requests.get(api_url)
+        btc_com_df = pd.read_json(btc_com_data.text)
+        btc_com_df_data = pd.DataFrame(btc_com_df.data.values.tolist())
+        return btc_com_df_data
 
-    def btc_com_pool_stats(url, access_key, puid):
+    def btc_com_pool_status(access_key, puid, url='https://pool.api.btc.com/v1/'):
         """
         This will pull the overall mining stats for btc.com pools
         Requires an account with access_key and puid
-        url example 'https://pool.api.btc.com/v1/blocks?access_key=${access_key}&puid=${puid}'
+        url example 'https://pool.api.btc.com/v1/pool/status?access_key={access_key}&puid={puid}'
         """
-        btc_com_data = requests.get(url)
-        return btc_com_data
+        api_url = f'{url}pool/status?access_key={access_key}&puid={puid}'
+        btc_com_data = requests.get(api_url)
+        btc_com_df = pd.read_json(btc_com_data.text)
+        btc_com_df_data = pd.DataFrame(btc_com_df.data.values.tolist())
+        return btc_com_df_data
 
     def btc_com_blocks(url):
         """
         This will scrape the Bitcoin block publication history from btc.com
+        Requires an account with access_key and puid
+        url example 'https://pool.api.btc.com/v1/blocks?access_key={access_key}&puid={puid}&page={str(int)}&page_size={str(int)}'
         """
         btc_com_data = requests.get(url)
         return btc_com_data
