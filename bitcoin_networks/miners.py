@@ -225,7 +225,6 @@ class AntPool:
         antpool_data = requests.get(url)
         return antpool_data
 
-#  Bixin, BitFury, Poolin, btc.top
 
 #%%
 '''
