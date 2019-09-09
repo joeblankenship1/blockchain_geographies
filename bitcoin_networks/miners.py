@@ -25,12 +25,14 @@ from bs4 import BeautifulSoup
 #%%
 class Bitnodes:
 
-    def bitnodes(url='https://bitnodes.earn.com/api/v1/snapshots/latest/'):
+    def bitnodes(url='https://bitnodes.earn.com/api/v1/snapshots/', date='latest/'):
         """
         This function will pull the data from bitnodes api for Bitcoin miners.
+        Date if in unix time, latest for most recent
+        Only the past 60 days is available
         """
         headers = {'Accept': 'application/json; indent=4', }
-        bitnodes_data = requests.get(url,
+        bitnodes_data = requests.get((url + date),
                                      headers=headers
                                      )
         bitnodes = pd.read_json(bitnodes_data.text)
