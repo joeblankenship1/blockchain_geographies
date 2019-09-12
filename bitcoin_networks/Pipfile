@@ -23,6 +23,7 @@ gab = "*"
 tweepy = "*"
 python-dotenv = "*"
 geopandas = "*"
+descartes = "*"
 
 [requires]
 python_version = "3.7"
