@@ -31,6 +31,14 @@ def create_cartogram(filename):
 
 
 #%%
+def points_in_polygon(point_file, poly_file, output_file):
+    """
+    This function performs a count points in polygon operation.
+    """
+    pass
+
+
+#%%
 '''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
