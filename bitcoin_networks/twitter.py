@@ -14,6 +14,12 @@ pull users
 pull user message history
 """
 
+def tweet_parser(tweets):
+    """
+
+    """
+    pass
+
 '''
 if __name__ == "__main__":
     """ This is executed when run from the command line """
