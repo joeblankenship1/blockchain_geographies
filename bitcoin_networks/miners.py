@@ -97,7 +97,8 @@ class BtcCom:
         api_url = f'{url}blocks?access_key={access_key}&puid={puid}&page={page}&page_size={page_size}'
         btc_com_data = requests.get(api_url)
         btc_com_df = pd.read_json(btc_com_data.text)
-        btc_com_df_final = btc_com_df.drop(columns='err_no')
+        btc_com_df_drop = btc_com_df.drop(columns='err_no')
+        btc_com_df_final = pd.DataFrame(btc_com_df_drop.data[0])
         return btc_com_df_final
 
     def btc_com_blocks_scrape(url='https://pool.btc.com/pool-stats'):
