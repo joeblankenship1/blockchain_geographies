@@ -88,6 +88,18 @@ class BtcCom:
         df_final = df_transpose.set_index('dtg')
         return df_final
 
+    def btc_com_blocks_stats(access_key, puid, page='1', page_size='1000', url='https://pool.api.btc.com/v1/'):
+        """
+        This will pull the Bitcoin block publication history from btc.com api
+        Requires an account with access_key and puid
+        url example 'https://pool.api.btc.com/v1/blocks?access_key={access_key}&puid={puid}&page={page_number}&page_size={max_1000}'
+        """
+        api_url = f'{url}blocks?access_key={access_key}&puid={puid}&page={page}&page_size={page_size}'
+        btc_com_data = requests.get(api_url)
+        btc_com_df = pd.read_json(btc_com_data.text)
+        btc_com_df_final = btc_com_df.drop(columns=['err_no'])
+        return btc_com_df_final.drop(['blocks'])
+
     def btc_com_blocks_api(access_key, puid, page, page_size='1000', url='https://pool.api.btc.com/v1/'):
         """
         This will pull the Bitcoin block publication history from btc.com api
