@@ -7,21 +7,34 @@ __author__ = "Joe Blankenship"
 __version__ = "19.0.1"
 __license__ = ""
 
+from dotenv import load_dotenv
+import os
 
-def linkedin_keys():
-    pass
-
-
-def github_keys():
-    pass
+load_dotenv()
 
 
-def opencage_keys():
-    pass
+class Linkedin:
+
+    def linkedin_keys():
+        pass
 
 
-def bitcoinwhoswho_keys():
-    pass
+class Github:
+
+    def github_keys():
+        pass
+
+
+class OpenCage:
+
+    def opencage_keys():
+        pass
+
+
+class BitcoinWhosWho:
+
+    def bitcoinwhoswho_keys():
+        pass
 
 
 '''
