@@ -15,25 +15,37 @@ load_dotenv()
 
 class Linkedin:
 
-    def linkedin_keys():
+    def enter_linkedin_keys():
+        pass
+
+    def load_linkedin_keys():
         pass
 
 
 class Github:
 
-    def github_keys():
+    def enter_github_keys():
+        pass
+
+    def load_github_keys():
         pass
 
 
 class OpenCage:
 
-    def opencage_keys():
+    def enter_opencage_keys():
+        pass
+
+    def load_opencage_keys():
         pass
 
 
 class BitcoinWhosWho:
 
-    def bitcoinwhoswho_keys():
+    def enter_bitcoinwhoswho_keys():
+        pass
+
+    def load_bitcoinwhoswho_keys():
         pass
 
 
