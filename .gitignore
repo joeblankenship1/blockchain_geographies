@@ -127,5 +127,5 @@ dmypy.json
 .vscode
 
 # credentials
-credentials.py
+.credentials
 
