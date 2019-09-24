@@ -122,6 +122,7 @@ class BtcCom:
         """
         This will scrape the Bitcoin block publication history from btc.com pool stats page
         """
+        # TODO: Fix timeout issue for url redirect
         block_data_raw = requests.get(url)
         block_data_text = BeautifulSoup((block_data_raw.text), "html.parser")
         block_data_header = block_data_text.find('thead')
