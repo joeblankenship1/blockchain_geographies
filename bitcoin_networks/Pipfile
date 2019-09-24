@@ -21,10 +21,10 @@ pygithub = "*"
 python-linkedin-v2 = "*"
 gab = "*"
 tweepy = "*"
-python-dotenv = "*"
 geopandas = "*"
 descartes = "*"
 geoplot = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
