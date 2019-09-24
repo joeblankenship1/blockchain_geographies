@@ -7,46 +7,53 @@ __author__ = "Joe Blankenship"
 __version__ = "19.0.1"
 __license__ = ""
 
+#%%
 from dotenv import load_dotenv
-import os
-
+from os import path, getenv
 load_dotenv()
 
 
-class Linkedin:
-
-    def enter_linkedin_keys():
-        pass
-
-    def load_linkedin_keys():
-        pass
-
-
-class Github:
-
-    def enter_github_keys():
-        pass
-
-    def load_github_keys():
-        pass
+#%%
+def generate_env_file():
+    if path.exists('.env') is True:
+        print("File already exists.")
+        exit
+    else:
+        env_vars = [
+            "LINKEDIN_NAME=\n",
+            "LINKEDIN_SECRET=\n",
+            "LINKEDIN_API=\n"
+        ]
+        with open('.env', 'a+') as env_file:
+            env_file.writelines(env_vars)
 
 
-class OpenCage:
+#%%
+def load_linkedin_keys():
+    """
+    Function loads Linkedin keys as environment variables from .env
+    To load key values into .env, edit the file manually.
+    """
+    linkedin_name = getenv('LINKEDIN_NAME')
+    linkedin_secret = getenv('LINKEDIN_SECRET')
+    linkedin_api = getenv('LINKEDIN_API')
+    return linkedin_name, linkedin_secret, linkedin_api
 
-    def enter_opencage_keys():
-        pass
 
-    def load_opencage_keys():
-        pass
+def load_github_keys():
+    pass
 
 
-class BitcoinWhosWho:
+def load_opencage_keys():
+    pass
 
-    def enter_bitcoinwhoswho_keys():
-        pass
 
-    def load_bitcoinwhoswho_keys():
-        pass
+def load_bitcoinwhoswho_keys():
+    pass
+
+
+def load_btccom_keys():
+    pass
 
 
 '''
