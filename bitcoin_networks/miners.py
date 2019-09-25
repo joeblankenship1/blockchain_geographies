@@ -20,6 +20,7 @@ __license__ = ""
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+import credentials
 
 
 #%%
@@ -61,6 +62,8 @@ class Bitnodes:
 #%%
 class BtcCom:
 
+    id, key = credentials.load_btccom_keys()
+
     def btc_com_nodes(access_key, puid, url='https://pool.api.btc.com/v1/'):
         """
         This will pull the node list from btc.com pool
@@ -88,7 +91,7 @@ class BtcCom:
         df_final = df_transpose.set_index('dtg')
         return df_final
 
-    def btc_com_blocks_stats(access_key, puid, page='1', page_size='1', url='https://pool.api.btc.com/v1/'):
+    def btc_com_blocks_stats(access_key=key, puid=id, page='1', page_size='1', url='https://pool.api.btc.com/v1/'):
         """
         This will pull the Bitcoin block publication history from btc.com api
         Requires an account with access_key and puid
@@ -100,22 +103,22 @@ class BtcCom:
         btc_com_df_final = btc_com_df.drop(columns=['err_no'])
         return btc_com_df_final.drop(['blocks'])
 
-    def btc_com_blocks_api(access_key, puid, page_size='1000', url='https://pool.api.btc.com/v1/'):
+    def btc_com_blocks_api(access_key=key, puid=id, page_size='1000', url='https://pool.api.btc.com/v1/'):
         """
         This will pull the Bitcoin block publication history from btc.com api
         Requires an account with access_key and puid
         url example 'https://pool.api.btc.com/v1/blocks?access_key={access_key}&puid={puid}&page_size={max_1000}'
         """
-        stats = BtcCom.btc_com_blocks_stats(access_key, puid)
+        stats = BtcCom.btc_com_blocks_stats()
         page_count = ((int(stats.data[0]))//1000) + 1
         btc_com_blocks_all = pd.DataFrame()
         for i in range(page_count):
-            api_url = f'{url}blocks?access_key={access_key}&puid={puid}&page={(str(i))}&page_size={page_size}'
-            btc_com_data = requests.get(api_url)
+            btc_com_data = requests.get(f"{url}blocks?access_key={access_key}&puid={puid}&page={str(i + 1)}&page_size={page_size}")
             btc_com_df = pd.read_json(btc_com_data.text)
             btc_com_df_drop = btc_com_df.drop(columns='err_no')
-            # btc_com_df_final = pd.DataFrame(btc_com_df_drop.data[0])
-            btc_com_blocks_all.append(btc_com_df_drop)
+            btc_com_df_blocks = btc_com_df_drop.loc['blocks']
+            btc_com_df_final = pd.DataFrame(btc_com_df_blocks.loc['data'])
+            btc_com_blocks_all = btc_com_blocks_all.append(btc_com_df_final)
         return btc_com_blocks_all
 
     def btc_com_blocks_scrape(url='https://pool.btc.com/pool-stats'):
