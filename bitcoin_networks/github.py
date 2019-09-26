@@ -10,6 +10,7 @@ __license__ = ""
 
 
 from github import Github
+import credentials
 
 
 github_acct = Github()

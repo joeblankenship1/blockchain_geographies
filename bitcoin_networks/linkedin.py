@@ -10,6 +10,7 @@ __license__ = ""
 
 
 from linkedin_v2 import linkedin
+import credentials
 
 authentication = linkedin.LinkedInDeveloperAuthentication(CONSUMER_KEY,
                                                           CONSUMER_SECRET, 

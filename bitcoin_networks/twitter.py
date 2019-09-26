@@ -14,6 +14,9 @@ pull users
 pull user message history
 """
 
+import tweepy
+import credentials
+
 def tweet_parser(tweets):
     """
 
