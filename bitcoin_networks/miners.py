@@ -150,14 +150,25 @@ class BtcCom:
 #%%
 class F2Pool:
 
-    def f2pool_stats(url='http://api.f2pool.com/bitcoin/pool'):
+    psw = credentials.load_f2pool_keys()
+
+    def f2pool_bitcoin_hashrate(url='http://api.f2pool.com/bitcoin/'):
         """
-        This will pull the stats from f2pool
-        Requires an account with an API key
-        url example 'http://api.f2pool.com/bitcoin/user'
+        This will pull the Bitcoin hashrate from f2pool
+        url example 'http://api.f2pool.com/bitcoin/'
         """
         f2pool_data = requests.get(url)
-        return f2pool_data.text
+        f2pool_df = pd.read_json(f2pool_data.text, orient='index')
+        return f2pool_df
+
+    def f2pool_bitcoin_userstats(user, url='http://api.f2pool.com/bitcoin/'):
+        """
+        This will pull the Bitcoin user info from f2pool
+        url example 'http://api.f2pool.com/bitcoin/user'
+        """
+        f2pool_data = requests.get(f'{url}{user}')
+        f2pool_df = pd.read_json(f2pool_data.text, orient='index')
+        return f2pool_df
 
 
 #%%
@@ -165,14 +176,14 @@ class Bitminter:
 
     bitminter_stats_url = 'https://bitminter.com/api/pool/stats'
 
-    def bitminter_stats(bitminter_stats_url):
+    def bitminter_stats(url=bitminter_stats_url):
         """
         This will pull the stats from bitminter
         pool stats are available through the public api
         """
-        url = bitminter_stats_url
         bitminter_data = requests.get(url)
-        return bitminter_data
+        bitminter_df = pd.read_json(bitminter_data.text)
+        return bitminter_df
 
 
 #%%
