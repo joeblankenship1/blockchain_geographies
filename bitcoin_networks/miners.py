@@ -150,14 +150,14 @@ class BtcCom:
 #%%
 class F2Pool:
 
-    def f2pool_stats(url):
+    def f2pool_stats(url='http://api.f2pool.com/bitcoin/pool'):
         """
         This will pull the stats from f2pool
         Requires an account with an API key
         url example 'http://api.f2pool.com/bitcoin/user'
         """
         f2pool_data = requests.get(url)
-        return f2pool_data
+        return f2pool_data.text
 
 
 #%%
