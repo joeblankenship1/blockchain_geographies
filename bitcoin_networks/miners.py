@@ -64,7 +64,7 @@ class BtcCom:
 
     id, key = credentials.load_btccom_keys()
 
-    def btc_com_nodes(access_key, puid, url='https://pool.api.btc.com/v1/'):
+    def btc_com_nodes(access_key=key, puid=id, url='https://pool.api.btc.com/v1/'):
         """
         This will pull the node list from btc.com pool
         Requires an account with access_key and puid
@@ -76,7 +76,7 @@ class BtcCom:
         btc_com_df_data = pd.DataFrame(btc_com_df.data.values.tolist())
         return btc_com_df_data
 
-    def btc_com_pool_status(access_key, puid, url='https://pool.api.btc.com/v1/'):
+    def btc_com_pool_status(access_key=key, puid=id, url='https://pool.api.btc.com/v1/'):
         """
         This will pull the overall mining stats for btc.com pools
         Requires an account with access_key and puid
@@ -182,16 +182,18 @@ class Bitminter:
         pool stats are available through the public api
         """
         bitminter_data = requests.get(url)
-        bitminter_df = pd.read_json(bitminter_data.text)
-        return bitminter_df
+        bitminter_df = pd.read_json(bitminter_data.text, orient='index')
+        bitminter_final = bitminter_df.transpose()
+        return bitminter_final
 
 
 #%%
 class Slushpool:
 
     slushpool_stats_url = 'https://slushpool.com/stats/json/btc/'
+    key = credentials.load_slushpool_keys()
 
-    def slushpool_stats(slushpool_stats_url, api_key):
+    def slushpool_stats(slushpool_stats_url=slushpool_stats_url, api_key=key):
         """
         This will pull the stats from slushpool
         pool stats require an API key in the header
@@ -200,7 +202,10 @@ class Slushpool:
         url = slushpool_stats_url
         headers = {'SlushPool-Auth-Token': str(api_key)}
         slushpool_data = requests.get(url, headers=headers)
-        return slushpool_data
+        slushpool_df = pd.DataFrame(eval(slushpool_data.text))
+        slushpool_trans = slushpool_df.transpose()
+        slushpool_final = slushpool_trans.drop(columns=['blocks'])
+        return slushpool_final
 
 
 #%%
