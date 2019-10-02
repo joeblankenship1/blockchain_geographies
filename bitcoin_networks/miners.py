@@ -211,8 +211,8 @@ class Slushpool:
 #%%
 class BitcoinCom:
 
-    bitcoincom_stats_url = ''
-    key = credentials.load_bitcoincom_keys()
+    bitcoincom_stats_url = 'https://console.pool.bitcoin.com/poolstatistics'
+    key, username, password = credentials.load_bitcoincom_keys()
 
     def bitcoin_stats(bitcoincom_stats_url):
         """
