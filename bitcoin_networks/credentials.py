@@ -151,7 +151,9 @@ def load_bitcoincom_keys():
     Function loads Bitcoin.com keys as environment variables from .credentials
     """
     bitcoincom_key = getenv('BITCOINCOM_KEY')
-    return bitcoincom_key
+    bitcoincom_username = getenv('BITCOINCOM_USERNAME')
+    bitcoincom_password = getenv('BITCOINCOM_PSW')
+    return bitcoincom_key, bitcoincom_username, bitcoincom_password
 
 
 #%%
