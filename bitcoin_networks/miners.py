@@ -20,6 +20,9 @@ __license__ = ""
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+import time
+import hmac
+import hashlib
 import credentials
 
 
@@ -255,16 +258,59 @@ class ViaBtc:
 #%%
 class AntPool:
 
-    antpool_stats_url = ''
+    antpool_stats_url = 'https://antpool.com/api/poolStats.htm'
+    antpool_hashrate_miner = 'https://antpool.com/api/workers.htm'
+    ap_id, ap_key, ap_secret = credentials.load_antpool_keys()
 
-    def antpool_stats(antpool_stats_url):
+    def get_signature(sign_id=ap_id, sign_key=ap_key, sign_secret=ap_secret):
+        """
+        Generate the API request signature from credentials
+        derived from Antpool docs example
+        """
+        nonce = int(time.time()*1000)
+        msgs = sign_id + sign_key + str(nonce)
+        ret = []
+        ret.append(hmac.new(sign_secret.encode(encoding="utf-8"),
+                            msg=msgs.encode(encoding="utf-8"),
+                            digestmod=hashlib.sha256
+                            ).hexdigest().upper())
+        ret.append(nonce)
+        return ret
+
+    def antpool_stats(url=antpool_stats_url, key=ap_key, api_sig=get_signature()):
         """
         This will pull the stats data from AntPool
         Requires an API key to access
         """
-        url = antpool_stats_url
-        antpool_data = requests.get(url)
-        return antpool_data
+        post_data = {
+            'key': key,
+            'nonce': api_sig[1],
+            'signature': api_sig[0],
+            'coin': 'BTC'
+        }
+        antpool_data = requests.post(url, data=post_data)
+        stats_df = pd.read_json(antpool_data.text)
+        df_clean = stats_df.drop(columns=['code', 'message'])
+        df_trans = df_clean.transpose()
+        return df_trans
+
+    def antpool_workers(url=antpool_hashrate_miner, key=ap_key, api_sig=get_signature()):
+        """
+        This will pull the stats data from AntPool
+        Requires an API key to access
+        """
+        post_data = {
+            'key': key,
+            'nonce': api_sig[1],
+            'signature': api_sig[0],
+            'coin': 'BTC',
+            'pageSize': 1000
+        }
+        antpool_data = requests.post(url, data=post_data)
+        stats_df = pd.read_json(antpool_data.text)
+        df_clean = stats_df.drop(columns=['code', 'message'])
+        df_trans = df_clean.transpose()
+        return df_trans
 
 
 #%%
